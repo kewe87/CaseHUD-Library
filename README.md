@@ -8,7 +8,7 @@ ready-made **lighting presets**.
 |---|---|---|---|
 | LCD designs | `designs/` | `index.json` | see below |
 | Hardware components (fans, RAM, blocks, strips, displays, boards) | `components/<vendor>/` | `components.json` | [docs/components.md](docs/components.md), `schema/component.schema.json` |
-| Case templates | `cases/<vendor>/` | `cases.json` | same, `schema/case.schema.json` |
+| Case templates (incl. generic form-factor templates in `cases/generic/`) | `cases/<vendor>/` | `cases.json` | same, `schema/case.schema.json` |
 | Lighting presets | `lighting/` | `lighting.json` | same, `schema/lighting.schema.json` |
 
 Community designs for CaseHUD's LCD gallery:

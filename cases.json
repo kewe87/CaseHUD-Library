@@ -1,6 +1,11 @@
 {
   "version": 1,
   "cases": [
-    {"id": "o11-dynamic-evo", "vendor": "Lian Li", "model": "O11 Dynamic EVO", "verified_by": ["manufacturer"], "file": "cases/lian-li/o11-dynamic-evo.json"}
+    {"id": "o11-dynamic-evo", "vendor": "Lian Li", "model": "O11 Dynamic EVO", "verified_by": ["manufacturer"], "file": "cases/lian-li/o11-dynamic-evo.json"},
+    {"id": "atx-mid-tower", "vendor": "Generic", "model": "ATX mid tower", "verified_by": ["community"], "file": "cases/generic/atx-mid-tower.json"},
+    {"id": "atx-dual-chamber", "vendor": "Generic", "model": "ATX dual chamber showcase", "verified_by": ["community"], "file": "cases/generic/atx-dual-chamber.json"},
+    {"id": "micro-atx-tower", "vendor": "Generic", "model": "Micro-ATX tower", "verified_by": ["community"], "file": "cases/generic/micro-atx-tower.json"},
+    {"id": "mini-itx-sff", "vendor": "Generic", "model": "Mini-ITX small form factor", "verified_by": ["community"], "file": "cases/generic/mini-itx-sff.json"},
+    {"id": "full-tower-eatx", "vendor": "Generic", "model": "E-ATX full tower", "verified_by": ["community"], "file": "cases/generic/full-tower-eatx.json"}
   ]
 }

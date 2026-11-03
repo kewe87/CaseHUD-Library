@@ -1,0 +1,331 @@
+{
+  "$schema": "https://raw.githubusercontent.com/kewe87/casehud-library/main/schema/case.schema.json",
+  "format": 1,
+  "id": "atx-mid-tower",
+  "vendor": "Generic",
+  "model": "ATX mid tower",
+  "dimensions_mm": {
+    "w": 210,
+    "h": 450,
+    "d": 450,
+    "approximate": true
+  },
+  "views": {
+    "front": {
+      "name": "Front face (210 mm wide)",
+      "size_mm": {
+        "w": 210,
+        "h": 450
+      },
+      "outline": [
+        {
+          "type": "rect",
+          "x": 0,
+          "y": 0,
+          "w": 210,
+          "h": 450,
+          "r": 10,
+          "role": "body"
+        },
+        {
+          "type": "rect",
+          "x": 10,
+          "y": 10,
+          "w": 190,
+          "h": 430,
+          "r": 6,
+          "role": "frame"
+        },
+        {
+          "type": "rect",
+          "x": 24,
+          "y": 24,
+          "w": 162,
+          "h": 390,
+          "r": 4,
+          "role": "zone",
+          "label": "front intake mesh"
+        }
+      ]
+    },
+    "side": {
+      "name": "Glass side (rear at the left, front at the right)",
+      "size_mm": {
+        "w": 450,
+        "h": 450
+      },
+      "outline": [
+        {
+          "type": "rect",
+          "x": 0,
+          "y": 0,
+          "w": 450,
+          "h": 450,
+          "r": 10,
+          "role": "body"
+        },
+        {
+          "type": "rect",
+          "x": 6,
+          "y": 6,
+          "w": 438,
+          "h": 438,
+          "r": 6,
+          "role": "glass"
+        },
+        {
+          "type": "rect",
+          "x": 2,
+          "y": 40,
+          "w": 8,
+          "h": 120,
+          "r": 0,
+          "role": "cutout",
+          "label": "rear I/O and expansion slots"
+        },
+        {
+          "type": "rect",
+          "x": 8,
+          "y": 352,
+          "w": 330,
+          "h": 90,
+          "r": 0,
+          "role": "zone",
+          "label": "PSU shroud"
+        }
+      ]
+    }
+  },
+  "mounts": [
+    {
+      "id": "top",
+      "face": "top",
+      "view": "side",
+      "region": {
+        "type": "rect",
+        "x": 30,
+        "y": 4,
+        "w": 320,
+        "h": 55,
+        "r": 0,
+        "role": "zone"
+      },
+      "layouts": [
+        {
+          "fan_mm": 120,
+          "count": 2,
+          "snap_mm": [
+            [
+              130.0,
+              16.5
+            ],
+            [
+              250.0,
+              16.5
+            ]
+          ]
+        },
+        {
+          "fan_mm": 140,
+          "count": 2,
+          "snap_mm": [
+            [
+              120.0,
+              16.5
+            ],
+            [
+              260.0,
+              16.5
+            ]
+          ]
+        }
+      ],
+      "radiator_mm": [
+        240,
+        280
+      ],
+      "max_thickness_mm": 55,
+      "slots": true,
+      "notes": "Seen edge-on from the glass side. Positions are generic approximations."
+    },
+    {
+      "id": "front",
+      "face": "front",
+      "view": "side",
+      "region": {
+        "type": "rect",
+        "x": 398,
+        "y": 20,
+        "w": 48,
+        "h": 370,
+        "r": 0,
+        "role": "zone"
+      },
+      "layouts": [
+        {
+          "fan_mm": 120,
+          "count": 3,
+          "snap_mm": [
+            [
+              433.5,
+              85.0
+            ],
+            [
+              433.5,
+              205.0
+            ],
+            [
+              433.5,
+              325.0
+            ]
+          ]
+        },
+        {
+          "fan_mm": 140,
+          "count": 2,
+          "snap_mm": [
+            [
+              433.5,
+              135.0
+            ],
+            [
+              433.5,
+              275.0
+            ]
+          ]
+        }
+      ],
+      "radiator_mm": [
+        360,
+        280
+      ],
+      "max_thickness_mm": 50,
+      "slots": true,
+      "notes": "Seen edge-on; fans are stacked top to bottom behind the front panel."
+    },
+    {
+      "id": "rear",
+      "face": "rear",
+      "view": "side",
+      "region": {
+        "type": "rect",
+        "x": 4,
+        "y": 25,
+        "w": 25,
+        "h": 140,
+        "r": 0,
+        "role": "zone"
+      },
+      "layouts": [
+        {
+          "fan_mm": 120,
+          "count": 1,
+          "snap_mm": [
+            [
+              16.5,
+              95
+            ]
+          ]
+        },
+        {
+          "fan_mm": 140,
+          "count": 1,
+          "snap_mm": [
+            [
+              16.5,
+              95
+            ]
+          ]
+        }
+      ],
+      "slots": true,
+      "notes": "Rear exhaust, 120 or 140 mm. Vertical position is approximate."
+    }
+  ],
+  "areas": [
+    {
+      "id": "motherboard",
+      "kind": "motherboard",
+      "name": "Motherboard tray (305 x 244 mm board)",
+      "view": "side",
+      "shape": {
+        "type": "rect",
+        "x": 24,
+        "y": 40,
+        "w": 244,
+        "h": 305,
+        "r": 0,
+        "role": "zone"
+      },
+      "notes": "Largest supported board shown; smaller boards sit in the top left."
+    },
+    {
+      "id": "psu-shroud",
+      "kind": "psu-shroud",
+      "name": "PSU shroud and cover",
+      "view": "side",
+      "shape": {
+        "type": "rect",
+        "x": 8,
+        "y": 352,
+        "w": 330,
+        "h": 90,
+        "r": 0,
+        "role": "zone"
+      }
+    },
+    {
+      "id": "psu",
+      "kind": "psu",
+      "name": "Power supply (standard form factor, up to 160 mm)",
+      "view": "side",
+      "shape": {
+        "type": "rect",
+        "x": 14,
+        "y": 356,
+        "w": 160,
+        "h": 86,
+        "r": 0,
+        "role": "zone"
+      }
+    },
+    {
+      "id": "gpu-bay",
+      "kind": "gpu-bay",
+      "name": "Horizontal graphics card area (350 mm long)",
+      "view": "side",
+      "shape": {
+        "type": "rect",
+        "x": 30,
+        "y": 185,
+        "w": 350,
+        "h": 52,
+        "r": 0,
+        "role": "zone"
+      },
+      "notes": "Dual-slot card clearance; vertical position follows the expansion slots."
+    },
+    {
+      "id": "drive-bay",
+      "kind": "drive",
+      "name": "Drive cage (2 x 3.5 inch)",
+      "view": "side",
+      "shape": {
+        "type": "rect",
+        "x": 250,
+        "y": 350,
+        "w": 140,
+        "h": 85,
+        "r": 0,
+        "role": "zone"
+      },
+      "notes": "Removable cage, location approximate."
+    }
+  ],
+  "approximate": true,
+  "sources": [],
+  "verified_by": [
+    "community"
+  ],
+  "notes": "Generic single chamber ATX mid tower template with a PSU shroud at the bottom. All dimensions are typical round values for the form factor, not taken from a specific product. Please measure your own case and correct the geometry. Rear is at the left, front at the right of the glass side view."
+}

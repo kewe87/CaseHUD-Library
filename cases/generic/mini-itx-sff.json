@@ -1,0 +1,323 @@
+{
+  "$schema": "https://raw.githubusercontent.com/kewe87/casehud-library/main/schema/case.schema.json",
+  "format": 1,
+  "id": "mini-itx-sff",
+  "vendor": "Generic",
+  "model": "Mini-ITX small form factor",
+  "dimensions_mm": {
+    "w": 200,
+    "h": 340,
+    "d": 360,
+    "approximate": true
+  },
+  "views": {
+    "front": {
+      "name": "Front face (200 mm wide)",
+      "size_mm": {
+        "w": 200,
+        "h": 340
+      },
+      "outline": [
+        {
+          "type": "rect",
+          "x": 0,
+          "y": 0,
+          "w": 200,
+          "h": 340,
+          "r": 10,
+          "role": "body"
+        },
+        {
+          "type": "rect",
+          "x": 10,
+          "y": 10,
+          "w": 180,
+          "h": 320,
+          "r": 6,
+          "role": "frame"
+        },
+        {
+          "type": "rect",
+          "x": 24,
+          "y": 24,
+          "w": 152,
+          "h": 280,
+          "r": 4,
+          "role": "zone",
+          "label": "front intake mesh"
+        }
+      ]
+    },
+    "side": {
+      "name": "Glass side (rear at the left, front at the right)",
+      "size_mm": {
+        "w": 360,
+        "h": 340
+      },
+      "outline": [
+        {
+          "type": "rect",
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 340,
+          "r": 10,
+          "role": "body"
+        },
+        {
+          "type": "rect",
+          "x": 6,
+          "y": 6,
+          "w": 348,
+          "h": 328,
+          "r": 6,
+          "role": "glass"
+        },
+        {
+          "type": "rect",
+          "x": 2,
+          "y": 40,
+          "w": 8,
+          "h": 120,
+          "r": 0,
+          "role": "cutout",
+          "label": "rear I/O and expansion slots"
+        },
+        {
+          "type": "rect",
+          "x": 8,
+          "y": 240,
+          "w": 230,
+          "h": 92,
+          "r": 0,
+          "role": "zone",
+          "label": "PSU and storage space"
+        }
+      ]
+    }
+  },
+  "mounts": [
+    {
+      "id": "top",
+      "face": "top",
+      "view": "side",
+      "region": {
+        "type": "rect",
+        "x": 30,
+        "y": 4,
+        "w": 270,
+        "h": 50,
+        "r": 0,
+        "role": "zone"
+      },
+      "layouts": [
+        {
+          "fan_mm": 120,
+          "count": 2,
+          "snap_mm": [
+            [
+              105.0,
+              16.5
+            ],
+            [
+              225.0,
+              16.5
+            ]
+          ]
+        },
+        {
+          "fan_mm": 140,
+          "count": 1,
+          "snap_mm": [
+            [
+              165.0,
+              16.5
+            ]
+          ]
+        }
+      ],
+      "radiator_mm": [
+        240
+      ],
+      "max_thickness_mm": 45,
+      "slots": true,
+      "notes": "Seen edge-on from the glass side."
+    },
+    {
+      "id": "front",
+      "face": "front",
+      "view": "side",
+      "region": {
+        "type": "rect",
+        "x": 310,
+        "y": 20,
+        "w": 46,
+        "h": 270,
+        "r": 0,
+        "role": "zone"
+      },
+      "layouts": [
+        {
+          "fan_mm": 120,
+          "count": 2,
+          "snap_mm": [
+            [
+              343.5,
+              95.0
+            ],
+            [
+              343.5,
+              215.0
+            ]
+          ]
+        }
+      ],
+      "radiator_mm": [
+        240
+      ],
+      "max_thickness_mm": 30,
+      "slots": true,
+      "notes": "Seen edge-on; two stacked fans."
+    },
+    {
+      "id": "bottom",
+      "face": "bottom",
+      "view": "side",
+      "region": {
+        "type": "rect",
+        "x": 120,
+        "y": 288,
+        "w": 140,
+        "h": 48,
+        "r": 0,
+        "role": "zone"
+      },
+      "layouts": [
+        {
+          "fan_mm": 120,
+          "count": 1,
+          "snap_mm": [
+            [
+              190,
+              323.5
+            ]
+          ]
+        }
+      ],
+      "radiator_mm": [
+        120
+      ],
+      "max_thickness_mm": 25,
+      "slots": true,
+      "notes": "Optional intake below the card area."
+    },
+    {
+      "id": "rear",
+      "face": "rear",
+      "view": "side",
+      "region": {
+        "type": "rect",
+        "x": 4,
+        "y": 20,
+        "w": 25,
+        "h": 110,
+        "r": 0,
+        "role": "zone"
+      },
+      "layouts": [
+        {
+          "fan_mm": 92,
+          "count": 1,
+          "snap_mm": [
+            [
+              16.5,
+              75
+            ]
+          ]
+        },
+        {
+          "fan_mm": 120,
+          "count": 1,
+          "snap_mm": [
+            [
+              16.5,
+              75
+            ]
+          ]
+        }
+      ],
+      "slots": true,
+      "notes": "Rear exhaust, 92 or 120 mm."
+    }
+  ],
+  "areas": [
+    {
+      "id": "motherboard",
+      "kind": "motherboard",
+      "name": "Motherboard tray (170 x 170 mm board)",
+      "view": "side",
+      "shape": {
+        "type": "rect",
+        "x": 24,
+        "y": 40,
+        "w": 170,
+        "h": 170,
+        "r": 0,
+        "role": "zone"
+      }
+    },
+    {
+      "id": "gpu-bay",
+      "kind": "gpu-bay",
+      "name": "Horizontal graphics card area (320 mm long)",
+      "view": "side",
+      "shape": {
+        "type": "rect",
+        "x": 24,
+        "y": 110,
+        "w": 320,
+        "h": 52,
+        "r": 0,
+        "role": "zone"
+      },
+      "notes": "Dual-slot card clearance; vertical position follows the expansion slots."
+    },
+    {
+      "id": "psu",
+      "kind": "psu",
+      "name": "Compact power supply (up to 125 mm)",
+      "view": "side",
+      "shape": {
+        "type": "rect",
+        "x": 14,
+        "y": 250,
+        "w": 125,
+        "h": 64,
+        "r": 0,
+        "role": "zone"
+      }
+    },
+    {
+      "id": "drive-bay",
+      "kind": "drive",
+      "name": "Drive mount (2 x 2.5 inch)",
+      "view": "side",
+      "shape": {
+        "type": "rect",
+        "x": 150,
+        "y": 250,
+        "w": 90,
+        "h": 70,
+        "r": 0,
+        "role": "zone"
+      },
+      "notes": "Location approximate."
+    }
+  ],
+  "approximate": true,
+  "sources": [],
+  "verified_by": [
+    "community"
+  ],
+  "notes": "Generic Mini-ITX small form factor template with a compact power supply below the board area. Typical round dimensions, not taken from a specific product. Please measure your own case and correct the geometry."
+}
