@@ -358,6 +358,9 @@
       "notes": "Illustrative only; the real space is behind the motherboard tray."
     }
   ],
+  "gpu_slots": [
+    {"id": "gpu-horizontal", "view": "side", "region": {"type": "rect", "x": 30, "y": 220, "w": 440, "h": 52, "r": 0, "role": "zone"}}
+  ],
   "approximate": true,
   "sources": [],
   "verified_by": [

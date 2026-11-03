@@ -79,6 +79,9 @@ not good enough to machine a bracket".
   of its zones) is placed in the view, its first LED at `position_mm`, the LEDs spread evenly along the
   polyline `path_mm` in addressing order. A strip that wraps a corner uses one entry per leg/zone.
 * `areas`: motherboard tray, PSU, PSU shroud, drive bays, chambers (shape + kind).
+* `gpu_slots` (optional, max 16): where a graphics card can sit. Each entry is `{id, view, region}`; `region`
+  is a shape in that view. Orientation is given by the region: a wide, flat rect is a horizontal card in
+  the expansion slots, a tall one a vertical (riser) mount. List one entry per variant the case supports.
 * `approximate: true` means the geometry was estimated (only `dimensions_mm` and the numeric
   fan/radiator support are published).
 
@@ -126,7 +129,7 @@ diese Seite erklärt sie nur.
   `manufacturer` = Herstellerangabe, `community`). `approximate: true` heißt: aus Fotos/Maßen
   abgeleitet, nicht veröffentlicht.
 * **Gehäuse:** Außenmaße, optional `integrated_lighting` (fest verbaute Leisten, als Bauteil + Pfad), Ansichten (`front`/`side`) als Formen, `mounts` mit Lüfter-/Radiator-
-  Einbauplätzen (`snap_mm` = Lüftermitten) und `areas` (Mainboard, Netzteil, Laufwerke).
+  Einbauplätzen (`snap_mm` = Lüftermitten) `areas` (Mainboard, Netzteil, Laufwerke) und optional `gpu_slots` (Grafikkarten-Plätze, horizontal oder vertikal).
 * **Lichtanimationen:** ein Effekt mit seinen Parametern (`params` mit den Original-Schlüsseln der
   LED-Engine), optional `path`, `palette` (Vorschau), `tags`, Name/Beschreibung auf Deutsch und Englisch.
 * **Prüfen:** `pip install jsonschema`, dann `python tools/validate-library/validate.py .`

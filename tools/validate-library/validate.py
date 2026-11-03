@@ -97,6 +97,15 @@ def check_case(path, d):
                     fail(f"{path.name}: mount {m['id']} snap point {p} outside the view")
 
 
+    seen = set()
+    for g in d.get("gpu_slots", []):
+        if g["id"] in seen:
+            fail(f"{path.name}: duplicate gpu slot id {g['id']}")
+        seen.add(g["id"])
+        if g["view"] not in d["views"]:
+            fail(f"{path.name}: gpu slot {g['id']} uses missing view {g['view']}")
+
+
 def check_integrated(root):
     comps = {}
     for f in (root / "components").rglob("*.json"):

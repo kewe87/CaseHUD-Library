@@ -53,6 +53,18 @@
         }
       }
     },
+    "gpu_slots": {
+      "type": "array", "maxItems": 16,
+      "description": "Optional. Positions where a graphics card can sit (e.g. horizontal in the expansion slots, or vertical on a riser mount). Orientation follows the shape of the region.",
+      "items": {
+        "type": "object", "required": ["id", "view", "region"], "additionalProperties": false,
+        "properties": {
+          "id": {"$ref": "common.schema.json#/$defs/id"},
+          "view": {"enum": ["front", "side"]},
+          "region": {"$ref": "common.schema.json#/$defs/shape"}
+        }
+      }
+    },
     "approximate": {"type": "boolean", "description": "true = the geometry (views, mounts, areas) is estimated, only dimensions_mm are published."},
     "sources": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/source"}, "maxItems": 32},
     "verified_by": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/verified_by"}, "minItems": 1, "uniqueItems": true},

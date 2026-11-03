@@ -314,6 +314,9 @@
       "notes": "Location approximate."
     }
   ],
+  "gpu_slots": [
+    {"id": "gpu-horizontal", "view": "side", "region": {"type": "rect", "x": 24, "y": 110, "w": 320, "h": 52, "r": 0, "role": "zone"}}
+  ],
   "approximate": true,
   "sources": [],
   "verified_by": [
