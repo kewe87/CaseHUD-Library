@@ -2,6 +2,7 @@
   "version": 1,
   "cases": [
     {"id": "o11-dynamic-evo", "vendor": "Lian Li", "model": "O11 Dynamic EVO", "verified_by": ["manufacturer"], "file": "cases/lian-li/o11-dynamic-evo.json"},
+    {"id": "o11-dynamic-evo-rgb", "vendor": "Lian Li", "model": "O11 Dynamic EVO RGB", "verified_by": ["manufacturer"], "file": "cases/lian-li/o11-dynamic-evo-rgb.json"},
     {"id": "atx-mid-tower", "vendor": "Generic", "model": "ATX mid tower", "verified_by": ["community"], "file": "cases/generic/atx-mid-tower.json"},
     {"id": "atx-dual-chamber", "vendor": "Generic", "model": "ATX dual chamber showcase", "verified_by": ["community"], "file": "cases/generic/atx-dual-chamber.json"},
     {"id": "micro-atx-tower", "vendor": "Generic", "model": "Micro-ATX tower", "verified_by": ["community"], "file": "cases/generic/micro-atx-tower.json"},

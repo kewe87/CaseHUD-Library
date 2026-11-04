@@ -1,0 +1,405 @@
+{
+  "$schema": "https://raw.githubusercontent.com/kewe87/casehud-library/main/schema/case.schema.json",
+  "format": 1,
+  "id": "o11-dynamic-evo-rgb",
+  "vendor": "Lian Li",
+  "model": "O11 Dynamic EVO RGB",
+  "part_numbers": [
+    "O11DERGBX",
+    "O11DERGBW"
+  ],
+  "dimensions_mm": {
+    "w": 290,
+    "h": 471,
+    "d": 478
+  },
+  "approximate": true,
+  "views": {
+    "side": {
+      "name": "Showcase side (tempered glass panel, I/O at the left)",
+      "size_mm": {
+        "w": 478,
+        "h": 471
+      },
+      "outline": [
+        {
+          "type": "rect",
+          "x": 0,
+          "y": 0,
+          "w": 478,
+          "h": 471,
+          "r": 10,
+          "role": "body"
+        },
+        {
+          "type": "rect",
+          "x": 6,
+          "y": 6,
+          "w": 466,
+          "h": 459,
+          "r": 6,
+          "role": "glass"
+        },
+        {
+          "type": "rect",
+          "x": 386,
+          "y": 25.5,
+          "w": 87.5,
+          "h": 420,
+          "r": 0,
+          "role": "zone",
+          "label": "side radiator mount"
+        }
+      ]
+    },
+    "front": {
+      "name": "Narrow side with the side radiator mount (290 mm wide)",
+      "size_mm": {
+        "w": 290,
+        "h": 471
+      },
+      "outline": [
+        {
+          "type": "rect",
+          "x": 0,
+          "y": 0,
+          "w": 290,
+          "h": 471,
+          "r": 10,
+          "role": "body"
+        },
+        {
+          "type": "rect",
+          "x": 10,
+          "y": 10,
+          "w": 270,
+          "h": 451,
+          "r": 6,
+          "role": "frame"
+        }
+      ]
+    }
+  },
+  "mounts": [
+    {
+      "id": "top",
+      "face": "top",
+      "view": "side",
+      "region": {
+        "type": "rect",
+        "x": 20,
+        "y": 4,
+        "w": 420,
+        "h": 87.5,
+        "r": 0,
+        "role": "zone"
+      },
+      "layouts": [
+        {
+          "fan_mm": 120,
+          "count": 3,
+          "snap_mm": [
+            [
+              80,
+              16.5
+            ],
+            [
+              200,
+              16.5
+            ],
+            [
+              320,
+              16.5
+            ]
+          ]
+        },
+        {
+          "fan_mm": 140,
+          "count": 3,
+          "snap_mm": [
+            [
+              90,
+              16.5
+            ],
+            [
+              230,
+              16.5
+            ],
+            [
+              370,
+              16.5
+            ]
+          ]
+        }
+      ],
+      "radiator_mm": [
+        420,
+        360,
+        280
+      ],
+      "max_thickness_mm": 87.5,
+      "slots": true,
+      "notes": "Seen edge-on from the glass side. Positions are estimated. 3 x 140 mm: some screw points are missing (manufacturer note)."
+    },
+    {
+      "id": "bottom",
+      "face": "bottom",
+      "view": "side",
+      "region": {
+        "type": "rect",
+        "x": 20,
+        "y": 379.5,
+        "w": 420,
+        "h": 87.5,
+        "r": 0,
+        "role": "zone"
+      },
+      "layouts": [
+        {
+          "fan_mm": 120,
+          "count": 3,
+          "snap_mm": [
+            [
+              80,
+              454.5
+            ],
+            [
+              200,
+              454.5
+            ],
+            [
+              320,
+              454.5
+            ]
+          ]
+        },
+        {
+          "fan_mm": 140,
+          "count": 3,
+          "snap_mm": [
+            [
+              90,
+              454.5
+            ],
+            [
+              230,
+              454.5
+            ],
+            [
+              370,
+              454.5
+            ]
+          ]
+        }
+      ],
+      "radiator_mm": [
+        360
+      ],
+      "max_thickness_mm": 87.5,
+      "slots": true,
+      "notes": "Seen edge-on from the glass side. Positions are estimated."
+    },
+    {
+      "id": "side",
+      "face": "side",
+      "view": "side",
+      "region": {
+        "type": "rect",
+        "x": 386,
+        "y": 25.5,
+        "w": 87.5,
+        "h": 420,
+        "r": 0,
+        "role": "zone"
+      },
+      "layouts": [
+        {
+          "fan_mm": 120,
+          "count": 3,
+          "snap_mm": [
+            [
+              457.5,
+              115.5
+            ],
+            [
+              457.5,
+              235.5
+            ],
+            [
+              457.5,
+              355.5
+            ]
+          ]
+        },
+        {
+          "fan_mm": 140,
+          "count": 3,
+          "snap_mm": [
+            [
+              457.5,
+              95.5
+            ],
+            [
+              457.5,
+              235.5
+            ],
+            [
+              457.5,
+              375.5
+            ]
+          ]
+        }
+      ],
+      "radiator_mm": [
+        360
+      ],
+      "slots": true,
+      "notes": "Positions are estimated."
+    },
+    {
+      "id": "rear",
+      "face": "rear",
+      "view": "side",
+      "region": {
+        "type": "rect",
+        "x": 4,
+        "y": 30,
+        "w": 25,
+        "h": 120,
+        "r": 0,
+        "role": "zone"
+      },
+      "layouts": [
+        {
+          "fan_mm": 120,
+          "count": 1,
+          "snap_mm": [
+            [
+              16.5,
+              90
+            ]
+          ]
+        }
+      ],
+      "slots": false,
+      "notes": "One 120 mm rear fan. Vertical position is a guess."
+    }
+  ],
+  "integrated_lighting": [
+    {
+      "component": "o11-dynamic-evo-argb-strip",
+      "zone": "front-leg",
+      "view": "front",
+      "position_mm": [
+        280,
+        464
+      ],
+      "path_mm": [
+        [
+          280,
+          464
+        ],
+        [
+          10,
+          464
+        ]
+      ],
+      "notes": "Assumed like the EVO (front leg, LED 1 at the front right). Please check against the case."
+    },
+    {
+      "component": "o11-dynamic-evo-argb-strip",
+      "zone": "side-leg",
+      "view": "side",
+      "position_mm": [
+        468,
+        464
+      ],
+      "path_mm": [
+        [
+          468,
+          464
+        ],
+        [
+          10,
+          464
+        ]
+      ],
+      "notes": "Assumed like the EVO (lower edge of the glass panel). Please check against the case."
+    }
+  ],
+  "areas": [
+    {
+      "id": "motherboard",
+      "kind": "motherboard",
+      "name": "Motherboard tray (ATX 305 x 244; E-ATX up to 280 mm wide)",
+      "view": "side",
+      "shape": {
+        "type": "rect",
+        "x": 24,
+        "y": 40,
+        "w": 244,
+        "h": 305,
+        "r": 0,
+        "role": "zone"
+      },
+      "notes": "Position estimated."
+    },
+    {
+      "id": "psu",
+      "kind": "psu",
+      "name": "PSU area (ATX up to 220 mm)",
+      "view": "side",
+      "shape": {
+        "type": "rect",
+        "x": 251,
+        "y": 373,
+        "w": 220,
+        "h": 90,
+        "r": 0,
+        "role": "zone"
+      },
+      "notes": "In the rear chamber; estimated."
+    },
+    {
+      "id": "gpu-bay",
+      "kind": "gpu-bay",
+      "name": "GPU clearance up to 455.7 mm",
+      "view": "side",
+      "shape": {
+        "type": "rect",
+        "x": 24,
+        "y": 180,
+        "w": 446,
+        "h": 50,
+        "r": 0,
+        "role": "zone"
+      },
+      "notes": "Length clearance only, vertical position is a guess."
+    }
+  ],
+  "gpu_slots": [
+    {
+      "id": "gpu-horizontal",
+      "view": "side",
+      "region": {
+        "type": "rect",
+        "x": 24,
+        "y": 190,
+        "w": 340,
+        "h": 52,
+        "r": 0,
+        "role": "zone"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.pccasegear.com/products/64045/lian-li-o11-dynamic-evo-rgb-case-black",
+      "note": "478 (D) x 290 (W) x 471 (H) mm; fans top/side/bottom 3 x 120 or 3 x 140, rear 1 x 120; radiators top up to 420, side and bottom up to 360; GPU 455.7 mm; CPU cooler 167 mm"
+    }
+  ],
+  "verified_by": [
+    "manufacturer"
+  ],
+  "notes": "External dimensions and fan/radiator numbers from the manufacturer specification (via retailer). The drawn geometry (mount positions, motherboard and PSU areas, ARGB strip paths) is estimated: please measure or correct. View axes as in the O11 Dynamic EVO template: glass side viewed from the front with the I/O at the left; fans are seen edge-on in this view."
+}
