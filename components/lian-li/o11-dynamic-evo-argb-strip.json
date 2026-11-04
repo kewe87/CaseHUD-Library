@@ -218,7 +218,7 @@
         5
       ]
     ],
-    "direction": "Measured: LED 1 at the front right, runs to the left, then around the corner towards the back of the case. Drawn unrolled as one straight line, LED 1 at the right end.",
+    "direction": "Measured: LED 1 at the front right, runs left, then around the corner to the back. Drawn unrolled, LED 1 at the right end.",
     "zones": [
       {
         "id": "front-leg",
@@ -251,5 +251,5 @@
     "measured",
     "manufacturer"
   ],
-  "notes": "The strip is the case's built-in lighting. Sources only say it runs along the edge of the glass panel; the L-shaped course (front leg then side leg) follows the owner's measurement (LED 1 front right, runs left, then back). The split 17 + 30 LEDs follows from 750 mm total length at an even pitch of about 16 mm and is a guess. The RGB variant of the case has separate top and bottom strips and is not covered."
+  "notes": "The strip is the case's built-in lighting. Sources only say it runs along the edge of the glass panel; the L-shaped course (front leg then side leg) follows the owner's measurement (LED 1 front right, runs left, then back). The split 17 + 30 LEDs follows from 750 mm total length at an even pitch of about 16 mm and is a guess. The RGB variant of the case has separate top and bottom strips and is not covered. LED order measured: LED 1 at the front right, runs to the left, then around the corner towards the back of the case. Drawn unrolled as one straight line, LED 1 at the right end."
 }

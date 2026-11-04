@@ -81,7 +81,7 @@
         8.0
       ]
     ],
-    "direction": "Along the light bar. Measured on the owner's system: with the module standing upright in the case, LED 1 is at the top end and the chain runs downward; in this drawing (module lying down) the left end is the top end. Several modules on one channel run in parallel.",
+    "direction": "Along the light bar: LED 1 at the top end when installed upright (left end in this drawing). Modules on one channel run in parallel.",
     "approximate": true,
     "measured_count": 8
   },
@@ -103,5 +103,5 @@
     "measured",
     "manufacturer"
   ],
-  "notes": "Dimensions are those reported for the Trident Z5 RGB family (the 8000 kit uses the same heat spreader); G.Skill's own datasheet value was not found. 8 LEDs per module are measured on the owner's sticks. LED order along the bar and positions are approximate."
+  "notes": "Dimensions are those reported for the Trident Z5 RGB family (the 8000 kit uses the same heat spreader); G.Skill's own datasheet value was not found. 8 LEDs per module are measured on the owner's sticks. LED order along the bar and positions are approximate. LED order measured on the owner's system: with the module standing upright in the case, LED 1 is at the top end and the chain runs downward; in this drawing (module lying down) the left end is the top end. Several modules on one channel run in parallel."
 }
