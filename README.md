@@ -79,6 +79,10 @@ Put `lighting/<id>.json` (one effect with its parameters, names/descriptions in 
 tags, `author` = your GitHub name, `license` = `CC-BY-4.0`), list it in `lighting.json`, validate with the
 script above. Presets must be your own work.
 
+## Like it?
+
+Then I'd be happy about a ⭐ for this library and for [CaseHUD](https://github.com/kewe87/CaseHUD). It helps others find the project.
+
 ## Licenses
 
 - Designs, components, cases and lighting presets (`designs/`, `components/`, `cases/`, `lighting/`,
