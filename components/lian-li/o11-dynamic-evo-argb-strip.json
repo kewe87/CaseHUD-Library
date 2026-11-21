@@ -251,5 +251,5 @@
     "measured",
     "manufacturer"
   ],
-  "notes": "The strip is the case's built-in lighting. Sources only say it runs along the edge of the glass panel; the L-shaped course (front leg then side leg) follows the owner's measurement (LED 1 front right, runs left, then back). The split 17 + 30 LEDs follows from 750 mm total length at an even pitch of about 16 mm and is a guess. The RGB variant of the case has separate top and bottom strips and is not covered. LED order measured: LED 1 at the front right, runs to the left, then around the corner towards the back of the case. Drawn unrolled as one straight line, LED 1 at the right end."
+  "notes": "The strip is the case's built-in lighting. Sources only say it runs along the edge of the glass panel; the L-shaped course (front leg then side leg) follows the owner's measurement (LED 1 front right, runs left, then back). The split 17 + 30 LEDs follows from 750 mm total length at an even pitch of about 16 mm and is a guess. The RGB variant of the case (o11-dynamic-evo-rgb) uses it twice, as a top and a bottom strip; that the RGB strips match this one is assumed, not checked. LED order measured: LED 1 at the front right, runs to the left, then around the corner towards the back of the case. Drawn unrolled as one straight line, LED 1 at the right end."
 }

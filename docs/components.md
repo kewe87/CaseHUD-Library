@@ -83,9 +83,12 @@ descriptions) at most 2000. The validators enforce both.
   `fan_mm`, `count`, `snap_mm` = fan centres in the view in mounting order), optional `radiator_mm`,
   `max_thickness_mm`, `slots` (true if the holes are slots) and `notes`.
 * `integrated_lighting` (optional): lighting built into the case, e.g. an ARGB strip. Each entry is
-  `{component, zone?, view, position_mm, path_mm?, notes?}`: the library component (and optionally one
-  of its zones) is placed in the view, its first LED at `position_mm`, the LEDs spread evenly along the
-  polyline `path_mm` in addressing order. A strip that wraps a corner uses one entry per leg/zone.
+  `{id?, name?, component, zone?, view, position_mm, path_mm?, legs?, notes?}`: the library component (and
+  optionally one of its zones) is placed in the view, its first LED at `position_mm`, the LEDs spread evenly
+  along the polyline `path_mm` in addressing order. One strip that wraps a corner of the case (front, then
+  glass side) is one entry: `legs` (`[{view, path_mm}]`) continues the path in further views; a leg that
+  starts at the shared corner continues it without a gap. `id` (unique in the case, defaults to the zone)
+  lets apps keep a binding when the template changes; `name` is a short English name.
 * `areas`: motherboard tray, PSU, PSU shroud, drive bays, chambers (shape + kind).
 * `gpu_slots` (optional, max 16): where a graphics card can sit. Each entry is `{id, view, region}`; `region`
   is a shape in that view. Orientation is given by the region: a wide, flat rect is a horizontal card in
@@ -136,7 +139,7 @@ diese Seite erklärt sie nur.
   Anschluss, USB-IDs, Quellen und `verified_by` (`measured` = am eigenen Gerät gemessen,
   `manufacturer` = Herstellerangabe, `community`). `approximate: true` heißt: aus Fotos/Maßen
   abgeleitet, nicht veröffentlicht.
-* **Gehäuse:** Außenmaße, optional `integrated_lighting` (fest verbaute Leisten, als Bauteil + Pfad), Ansichten (`front`/`side`) als Formen, `mounts` mit Lüfter-/Radiator-
+* **Gehäuse:** Außenmaße, optional `integrated_lighting` (fest verbaute Leisten, als Bauteil + Pfad; eine Leiste über eine Ecke mit `legs`), Ansichten (`front`/`side`) als Formen, `mounts` mit Lüfter-/Radiator-
   Einbauplätzen (`snap_mm` = Lüftermitten) `areas` (Mainboard, Netzteil, Laufwerke) und optional `gpu_slots` (Grafikkarten-Plätze, horizontal oder vertikal).
 * **Lichtanimationen:** ein Effekt mit seinen Parametern (`params` mit den Original-Schlüsseln der
   LED-Engine), optional `path`, `palette` (Vorschau), `tags`, Name/Beschreibung auf Deutsch und Englisch.

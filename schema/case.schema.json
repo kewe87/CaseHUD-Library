@@ -37,12 +37,25 @@
       "items": {
         "type": "object", "required": ["component", "view", "position_mm"], "additionalProperties": false,
         "properties": {
+          "id": {"$ref": "common.schema.json#/$defs/id", "description": "Optional. Names the entry within the case (unique); apps use it to keep a binding when the template changes. Defaults to the zone."},
+          "name": {"type": "string", "maxLength": 40, "description": "Optional. Short English name, e.g. \"Top strip\"."},
           "component": {"$ref": "common.schema.json#/$defs/id"},
           "zone": {"$ref": "common.schema.json#/$defs/id", "description": "Zone id of the component; omit for all LEDs."},
           "view": {"enum": ["front", "side"]},
           "position_mm": {"$ref": "common.schema.json#/$defs/point", "description": "Where the first LED of the zone sits in the view."},
           "path_mm": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/point"}, "minItems": 2, "maxItems": 64,
             "description": "Polyline the LEDs of the zone follow, starting at position_mm; LEDs are spread evenly along it in addressing order."},
+          "legs": {
+            "type": "array", "minItems": 1, "maxItems": 8,
+            "description": "Optional. Continues path_mm in further views, in addressing order, for one strip that runs around a corner of the case (e.g. along the front, then along the glass side). A leg that starts where the previous one ends (the shared corner) continues it without a gap. Needs path_mm.",
+            "items": {
+              "type": "object", "required": ["view", "path_mm"], "additionalProperties": false,
+              "properties": {
+                "view": {"enum": ["front", "side"]},
+                "path_mm": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/point"}, "minItems": 2, "maxItems": 64}
+              }
+            }
+          },
           "notes": {"$ref": "common.schema.json#/$defs/text"}
         }
       }

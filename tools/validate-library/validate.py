@@ -193,6 +193,15 @@ def check_integrated(root):
                 fail(f"{f.name}: component {e['component']} has no zone {e['zone']}")
             if e["view"] not in d["views"]:
                 fail(f"{f.name}: integrated_lighting uses missing view {e['view']}")
+            for leg in e.get("legs", []):
+                if leg["view"] not in d["views"]:
+                    fail(f"{f.name}: integrated_lighting leg uses missing view {leg['view']}")
+            if e.get("legs") and "path_mm" not in e:
+                fail(f"{f.name}: integrated_lighting legs need path_mm")
+        ids = [e.get("id") or e.get("zone") for e in d.get("integrated_lighting", [])]
+        dup = {i for i in ids if i and ids.count(i) > 1}
+        if dup:
+            fail(f"{f.name}: integrated_lighting ids not unique: {', '.join(sorted(dup))}")
 
 
 def check_set(folder, schema, check, index_name, list_key):

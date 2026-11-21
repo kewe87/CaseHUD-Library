@@ -291,44 +291,76 @@
   ],
   "integrated_lighting": [
     {
+      "id": "top",
+      "name": "Top strip",
       "component": "o11-dynamic-evo-argb-strip",
-      "zone": "front-leg",
       "view": "front",
       "position_mm": [
-        280,
-        464
+        285,
+        7
       ],
       "path_mm": [
         [
-          280,
-          464
+          285,
+          7
         ],
         [
-          10,
-          464
+          0,
+          7
         ]
       ],
-      "notes": "Assumed like the EVO (front leg, LED 1 at the front right). Please check against the case."
+      "legs": [
+        {
+          "view": "side",
+          "path_mm": [
+            [
+              478,
+              7
+            ],
+            [
+              18,
+              7
+            ]
+          ]
+        }
+      ],
+      "notes": "Upper edge. Assumed course: along the front edge from the end away from the glass to the front glass corner, then along the glass edge to the rear (one strip of 47 LEDs). LED 1 position and wire direction are not confirmed: please check against the case."
     },
     {
+      "id": "bottom",
+      "name": "Bottom strip",
       "component": "o11-dynamic-evo-argb-strip",
-      "zone": "side-leg",
-      "view": "side",
+      "view": "front",
       "position_mm": [
-        468,
+        285,
         464
       ],
       "path_mm": [
         [
-          468,
+          285,
           464
         ],
         [
-          10,
+          0,
           464
         ]
       ],
-      "notes": "Assumed like the EVO (lower edge of the glass panel). Please check against the case."
+      "legs": [
+        {
+          "view": "side",
+          "path_mm": [
+            [
+              478,
+              464
+            ],
+            [
+              18,
+              464
+            ]
+          ]
+        }
+      ],
+      "notes": "Lower edge. Assumed course: along the front edge from the end away from the glass to the front glass corner, then along the glass edge to the rear (one strip of 47 LEDs). LED 1 position and wire direction are not confirmed: please check against the case."
     }
   ],
   "areas": [
@@ -405,5 +437,5 @@
   "verified_by": [
     "manufacturer"
   ],
-  "notes": "External dimensions and fan/radiator numbers from the manufacturer specification (via retailer). The drawn geometry (mount positions, motherboard and PSU areas, ARGB strip paths) is estimated: please measure or correct. View axes as in the O11 Dynamic EVO template: glass side viewed from the front with the I/O at the left; fans are seen edge-on in this view."
+  "notes": "External dimensions and fan/radiator numbers from the manufacturer specification (via retailer). The drawn geometry (mount positions, motherboard and PSU areas, ARGB strip paths and LED 1) is estimated: please measure or correct. View axes as in the O11 Dynamic EVO template: glass side viewed from the front with the I/O at the left; fans are seen edge-on in this view."
 }
