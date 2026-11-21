@@ -18,6 +18,14 @@
       "properties": {"w": {"$ref": "common.schema.json#/$defs/size"}, "h": {"$ref": "common.schema.json#/$defs/size"},
         "d": {"$ref": "common.schema.json#/$defs/size"}, "approximate": {"type": "boolean"}}
     },
+    "orientation": {
+      "type": "object", "additionalProperties": false,
+      "description": "Optional; both keys optional, default rear/left. side_view_left = which end of the case is on the LEFT in the side view; glass_side = the glass side seen from the front.",
+      "properties": {
+        "side_view_left": {"enum": ["rear", "front"], "default": "rear"},
+        "glass_side": {"enum": ["left", "right"], "default": "left"}
+      }
+    },
     "views": {
       "type": "object", "minProperties": 1, "additionalProperties": false,
       "properties": {"front": {"$ref": "#/$defs/view"}, "side": {"$ref": "#/$defs/view"}}

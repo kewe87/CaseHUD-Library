@@ -65,11 +65,19 @@ Shapes are drawn in array order (later on top). `role` is a hint for styling: `b
 A reader should treat `leds.approximate` and `dimensions_mm.approximate` as "good enough to draw,
 not good enough to machine a bracket".
 
+Length limits (as in CaseHUD, counted in Unicode code points): name-like strings (vendor, model, view and
+area names, zone names, `leds.direction`, connection type) at most 160 characters; long texts (`notes`,
+descriptions) at most 2000. The validators enforce both.
+
 ### Case (`cases/<vendor>/<id>.json`)
 
 * `dimensions_mm`: external `w`, `h`, `d` exactly as the manufacturer lists them (W/H/D).
 * `views.front` / `views.side`: each has `size_mm {w,h}` and `outline` (shapes: panels, glass, frame,
   chambers, cut-outs). The mapping of a view to a physical face is given in the view's `name`.
+* `orientation` (optional, default `{"side_view_left": "rear", "glass_side": "left"}`): how the side view
+  is oriented. `side_view_left` (`rear` or `front`) is the end of the case on the LEFT of the side view;
+  `glass_side` (`left` or `right`) is the glass side seen from the front. Both keys are optional; unknown
+  keys or values are an error. All templates in this library are rear-left and state it explicitly.
 * `mounts`: fan/radiator mounting positions. Each mount has `face` (`top`, `bottom`, `front`, `rear`,
   `side`, `other`), `view`, a `region` shape (envelope incl. radiator), `layouts` (per fan size:
   `fan_mm`, `count`, `snap_mm` = fan centres in the view in mounting order), optional `radiator_mm`,

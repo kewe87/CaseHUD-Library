@@ -15,6 +15,10 @@
     "d": 465
   },
   "approximate": true,
+  "orientation": {
+    "side_view_left": "rear",
+    "glass_side": "left"
+  },
   "views": {
     "side": {
       "name": "Showcase side (tempered glass panel, I/O at the left)",

@@ -10,6 +10,10 @@
     "d": 360,
     "approximate": true
   },
+  "orientation": {
+    "side_view_left": "rear",
+    "glass_side": "left"
+  },
   "views": {
     "front": {
       "name": "Front face (200 mm wide)",

@@ -37,7 +37,7 @@
         "count": {"type": "integer", "minimum": 0, "maximum": 2000},
         "positions_mm": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/point"}, "maxItems": 2000,
           "description": "Front-view positions in the order the device addresses the LEDs (index 0 = first LED)."},
-        "direction": {"$ref": "common.schema.json#/$defs/text"},
+        "direction": {"$ref": "common.schema.json#/$defs/name"},
         "zones": {
           "type": "array", "maxItems": 32,
           "items": {
@@ -47,7 +47,7 @@
               "name": {"type": "string", "maxLength": 80},
               "first": {"type": "integer", "minimum": 0},
               "count": {"type": "integer", "minimum": 1},
-              "direction": {"$ref": "common.schema.json#/$defs/text"}
+              "direction": {"$ref": "common.schema.json#/$defs/name"}
             }
           }
         },

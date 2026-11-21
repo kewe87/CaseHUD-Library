@@ -56,7 +56,71 @@ def inside(p, w, h, tol=1.0):
     return -tol <= p[0] <= w + tol and -tol <= p[1] <= h + tol
 
 
+MAX_NAME, MAX_TEXT = 160, 2000  # CaseHUD maxLibName / maxLibText, in Unicode code points
+ORIENTATION = {"side_view_left": ("rear", "front"), "glass_side": ("left", "right")}
+
+
+def limit(path, where, v, n):
+    if v is None:
+        return
+    if not isinstance(v, str):
+        fail(f"{path.name}: {where} must be a string")
+    elif len(v) > n:  # len() of a str counts code points
+        fail(f"{path.name}: {where} has {len(v)} characters, the limit is {n}")
+
+
+def check_orientation(path, d):
+    o = d.get("orientation")
+    if o is None:
+        return
+    if not isinstance(o, dict):
+        fail(f"{path.name}: orientation must be an object")
+        return
+    for k, v in o.items():
+        if k not in ORIENTATION:
+            fail(f"{path.name}: orientation: unknown key {k!r}")
+        elif v not in ORIENTATION[k]:
+            fail(f"{path.name}: orientation.{k} must be one of {ORIENTATION[k]}, got {v!r}")
+
+
+def check_lengths(path, d, kind):
+    names = [("vendor", d.get("vendor")), ("model", d.get("model"))]
+    texts = [("notes", d.get("notes"))]
+    if kind == "component":
+        names.append(("category", d.get("category")))
+        c = d.get("connection")
+        if isinstance(c, dict):
+            names.append(("connection.type", c.get("type")))
+            texts.append(("connection.notes", c.get("notes")))
+        leds = d.get("leds")
+        if isinstance(leds, dict):
+            names.append(("leds.direction", leds.get("direction")))
+            for i, z in enumerate(leds.get("zones", [])):
+                if isinstance(z, dict):
+                    names.append((f"leds.zones[{i}].name", z.get("name")))
+                    names.append((f"leds.zones[{i}].direction", z.get("direction")))
+    else:
+        for vn, v in (d.get("views") or {}).items():
+            if isinstance(v, dict):
+                names.append((f"views.{vn}.name", v.get("name")))
+        for i, a in enumerate(d.get("areas", [])):
+            if isinstance(a, dict):
+                names.append((f"areas[{i}].name", a.get("name")))
+                texts.append((f"areas[{i}].notes", a.get("notes")))
+        for i, m in enumerate(d.get("mounts", [])):
+            if isinstance(m, dict):
+                texts.append((f"mounts[{i}].notes", m.get("notes")))
+        for i, e in enumerate(d.get("integrated_lighting", [])):
+            if isinstance(e, dict):
+                texts.append((f"integrated_lighting[{i}].notes", e.get("notes")))
+    for w, v in names:
+        limit(path, w, v, MAX_NAME)
+    for w, v in texts:
+        limit(path, w, v, MAX_TEXT)
+
+
 def check_component(path, d):
+    check_lengths(path, d, "component")
     dim = d["dimensions_mm"]
     if d["id"] != path.stem:
         fail(f"{path.name}: id must equal the file name")
@@ -82,6 +146,8 @@ def check_component(path, d):
 
 
 def check_case(path, d):
+    check_orientation(path, d)
+    check_lengths(path, d, "case")
     if d["id"] != path.stem:
         fail(f"{path.name}: id must equal the file name")
     for m in d.get("mounts", []):

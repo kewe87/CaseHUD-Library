@@ -10,11 +10,136 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	"unicode/utf8"
 
 	"github.com/kewe87/casehud/internal/community"
 )
 
 var idRe = regexp.MustCompile(`^[a-z0-9][a-z0-9-]{0,47}$`)
+
+// CaseHUD limits (internal/sketch maxLibName, maxLibText), in Unicode code points.
+const (
+	maxLibName = 160
+	maxLibText = 2000
+)
+
+type libZone struct {
+	Name      string `json:"name"`
+	Direction string `json:"direction"`
+}
+
+type libNoted struct {
+	Name  string `json:"name"`
+	Notes string `json:"notes"`
+}
+
+// libFile is the subset of a case or component file whose strings are limited.
+type libFile struct {
+	Vendor      string `json:"vendor"`
+	Model       string `json:"model"`
+	Category    string `json:"category"`
+	Notes       string `json:"notes"`
+	Orientation *struct {
+		SideViewLeft string `json:"side_view_left"`
+		GlassSide    string `json:"glass_side"`
+	} `json:"orientation"`
+	Views      map[string]libNoted `json:"views"`
+	Areas      []libNoted          `json:"areas"`
+	Mounts     []libNoted          `json:"mounts"`
+	Integrated []libNoted          `json:"integrated_lighting"`
+	Connection *struct {
+		Type  string `json:"type"`
+		Notes string `json:"notes"`
+	} `json:"connection"`
+	LEDs *struct {
+		Direction string    `json:"direction"`
+		Zones     []libZone `json:"zones"`
+	} `json:"leds"`
+}
+
+// checkLibrary checks components/ and cases/: orientation values and the
+// CaseHUD length limits (names 160, long texts 2000 code points).
+func checkLibrary(root string, fail func(string, ...any)) {
+	for _, dir := range []string{"components", "cases"} {
+		_ = filepath.Walk(filepath.Join(root, dir), func(path string, fi os.FileInfo, err error) error {
+			if err != nil || fi.IsDir() || !strings.HasSuffix(path, ".json") {
+				return nil
+			}
+			rel, _ := filepath.Rel(root, path)
+			rel = filepath.ToSlash(rel)
+			b, err := os.ReadFile(path)
+			if err != nil {
+				fail("%s: %v", rel, err)
+				return nil
+			}
+			// orientation: unknown keys are an error, so decode strictly
+			var raw struct {
+				Orientation json.RawMessage `json:"orientation"`
+			}
+			var f libFile
+			if err := json.Unmarshal(b, &raw); err != nil {
+				fail("%s: %v", rel, err)
+				return nil
+			}
+			if err := json.Unmarshal(b, &f); err != nil {
+				fail("%s: %v", rel, err)
+				return nil
+			}
+			if len(raw.Orientation) > 0 && string(raw.Orientation) != "null" {
+				var o map[string]string
+				if err := json.Unmarshal(raw.Orientation, &o); err != nil {
+					fail("%s: orientation must be an object of strings", rel)
+				}
+				for k, v := range o {
+					switch {
+					case k == "side_view_left" && (v == "rear" || v == "front"):
+					case k == "glass_side" && (v == "left" || v == "right"):
+					case k != "side_view_left" && k != "glass_side":
+						fail("%s: orientation: unknown key %q", rel, k)
+					default:
+						fail("%s: orientation.%s: invalid value %q", rel, k, v)
+					}
+				}
+			}
+			lim := func(what, v string, n int) {
+				if !utf8.ValidString(v) {
+					fail("%s: %s is not valid UTF-8", rel, what)
+				} else if c := utf8.RuneCountInString(v); c > n {
+					fail("%s: %s has %d characters, the limit is %d", rel, what, c, n)
+				}
+			}
+			lim("vendor", f.Vendor, maxLibName)
+			lim("model", f.Model, maxLibName)
+			lim("category", f.Category, maxLibName)
+			lim("notes", f.Notes, maxLibText)
+			for n, v := range f.Views {
+				lim("views."+n+".name", v.Name, maxLibName)
+			}
+			for i, a := range f.Areas {
+				lim(fmt.Sprintf("areas[%d].name", i), a.Name, maxLibName)
+				lim(fmt.Sprintf("areas[%d].notes", i), a.Notes, maxLibText)
+			}
+			for i, m := range f.Mounts {
+				lim(fmt.Sprintf("mounts[%d].notes", i), m.Notes, maxLibText)
+			}
+			for i, m := range f.Integrated {
+				lim(fmt.Sprintf("integrated_lighting[%d].notes", i), m.Notes, maxLibText)
+			}
+			if c := f.Connection; c != nil {
+				lim("connection.type", c.Type, maxLibName)
+				lim("connection.notes", c.Notes, maxLibText)
+			}
+			if l := f.LEDs; l != nil {
+				lim("leds.direction", l.Direction, maxLibName)
+				for i, z := range l.Zones {
+					lim(fmt.Sprintf("leds.zones[%d].name", i), z.Name, maxLibName)
+					lim(fmt.Sprintf("leds.zones[%d].direction", i), z.Direction, maxLibName)
+				}
+			}
+			return nil
+		})
+	}
+}
 
 func main() {
 	if len(os.Args) != 2 {
@@ -34,7 +159,7 @@ func main() {
 		fail("index.json larger than 1 MiB")
 	}
 	var idx struct {
-		Version int                `json:"version"`
+		Version int               `json:"version"`
 		Designs []community.Entry `json:"designs"`
 	}
 	if err := json.Unmarshal(b, &idx); err != nil {
@@ -87,6 +212,7 @@ func main() {
 			fail("%s is not listed in index.json", rel)
 		}
 	}
+	checkLibrary(root, fail)
 	if bad > 0 {
 		fmt.Printf("%d problem(s)\n", bad)
 		os.Exit(1)

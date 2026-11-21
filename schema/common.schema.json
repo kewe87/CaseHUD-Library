@@ -32,6 +32,7 @@
       "properties": {"url": {"type": "string", "pattern": "^https://"}, "note": {"type": "string", "maxLength": 300}}
     },
     "verified_by": {"enum": ["measured", "manufacturer", "community"]},
+    "name": {"type": "string", "maxLength": 160, "description": "Name-like string: at most 160 characters (Unicode code points), like CaseHUD."},
     "text": {"type": "string", "maxLength": 2000}
   }
 }
