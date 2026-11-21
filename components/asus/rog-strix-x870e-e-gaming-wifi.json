@@ -95,7 +95,7 @@
         90.0
       ]
     ],
-    "direction": "Measured: the I/O cover is one channel of 9 LEDs (device channel ch4). The LEDs sit in the I/O cover left of the CPU socket; positions down the middle of the cover are approximate.",
+    "direction": "I/O cover: one channel of 9 measured LEDs (ch4) left of the CPU socket; positions down the middle of the cover are approximate.",
     "approximate": true,
     "zones": [
       {
