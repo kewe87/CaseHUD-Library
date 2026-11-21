@@ -59,43 +59,43 @@
     "count": 9,
     "positions_mm": [
       [
-        100.0,
+        56.0,
         10.0
       ],
       [
-        100.0,
+        56.0,
         20.0
       ],
       [
-        100.0,
+        56.0,
         30.0
       ],
       [
-        100.0,
+        56.0,
         40.0
       ],
       [
-        100.0,
+        56.0,
         50.0
       ],
       [
-        100.0,
+        56.0,
         60.0
       ],
       [
-        100.0,
+        56.0,
         70.0
       ],
       [
-        100.0,
+        56.0,
         80.0
       ],
       [
-        100.0,
+        56.0,
         90.0
       ]
     ],
-    "direction": "Measured: the I/O cover is one channel of 9 LEDs (device channel ch4). Positions along the cover are a placeholder.",
+    "direction": "Measured: the I/O cover is one channel of 9 LEDs (device channel ch4). The LEDs sit in the I/O cover left of the CPU socket; positions down the middle of the cover are approximate.",
     "approximate": true,
     "zones": [
       {
